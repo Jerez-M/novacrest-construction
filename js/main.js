@@ -69,6 +69,38 @@
 
   // Update the content of the element with the current year
   document.getElementById("current-year").textContent = currentYear;
+
+    // Function to initialize the portfolio filter
+    function initializePortfolioFilter() {
+        var portfolioFilters = $("#portfolio-flters li");
+
+        // Filter function
+        function filterPortfolioItems(filter) {
+            $(".portfolio-item").fadeOut(300);
+
+            if (filter == "*") {
+                $(".portfolio-item").fadeIn(300);
+            } else {
+                $(filter).fadeIn(300);
+            }
+        }
+
+        // Click event for portfolio filters
+        portfolioFilters.on("click", function () {
+            portfolioFilters.removeClass("active");
+            $(this).addClass("active");
+            var filter = $(this).data("filter");
+            filterPortfolioItems(filter);
+        });
+
+        // Initialize with the "All" filter
+        filterPortfolioItems("*");
+    }
+
+    // Call the function when the page loads
+    $(document).ready(function () {
+        initializePortfolioFilter();
+    });
     
 })(jQuery);
 
