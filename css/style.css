@@ -288,3 +288,19 @@
     background: var(--primary);
     transform: skew(40deg);
 }
+
+.enlarged {
+    transform: scale(1.03); /* Increase the size of the image */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.service-item .service-image {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    object-fit: cover;
+}
+.service-image-2 {
+    width: 100%;
+    height: 450px; /* Adjust the height as needed */
+    object-fit: cover;
+}

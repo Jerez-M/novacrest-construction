@@ -101,6 +101,78 @@
     $(document).ready(function () {
         initializePortfolioFilter();
     });
+
+    $(document).ready(function() {
+        $("img").hover(
+            function() {
+                $(this).addClass("enlarged");
+            },
+            function() {
+                $(this).removeClass("enlarged");
+            }
+        );
+    });
+
+    $(document).ready(function() {
+        // Add and remove active class on navigation item click
+        $(".navbar-nav .nav-link").click(function() {
+            $(".navbar-nav .nav-link").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        // Update active navigation item on scroll
+        $(window).scroll(function() {
+            var currentPosition = $(this).scrollTop();
+            $(".navbar-nav .nav-link").each(function() {
+                var targetElement = $($(this).attr("href"));
+                if (targetElement.position().top <= currentPosition && (targetElement.position().top + targetElement.height()) > currentPosition) {
+                    $(".navbar-nav .nav-link").removeClass("active");
+                    $(this).addClass("active");
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $('#submitButton').click(function() {
+          var email = $('#emailInput').val();
+      
+          $.ajax({
+            url: '/send-email',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ email }),
+            success: function(result) {
+              alert('Email received successfully');
+            },
+            error: function(error) {
+              alert('Email received successfully');
+              window.location.reload() 
+            }
+          });
+        });
+      });
+
+      $(document).ready(function() {
+        $('#requestCall').click(function() {
+          var email = $('#requestCall').val();
+      
+          $.ajax({
+            url: '/send-email',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ email }),
+            success: function(result) {
+              alert('Email received successfully');
+            },
+            error: function(error) {
+              alert('Email received successfully');
+              window.location.reload() 
+            }
+          });
+        });
+      });
     
 })(jQuery);
+
 
